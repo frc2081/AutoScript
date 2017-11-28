@@ -5,14 +5,13 @@
  *      Author: FIRSTUser
  */
 
-#include <autoCommands/CommandVision.h>
+#include "CommandVision.h"
 
-CommandVision::CommandVision(swervelib *swerveLib) {
+CommandVision::CommandVision() {
 	// TODO Auto-generated constructor stub
 	autoMag = 0;
-	autoAng = 0;
-	autoRot = 0;
-	AD = new liftAutoDock();
+
+	//Init vision stuff
 }
 
 void CommandVision::init(commandInput input) {
@@ -25,12 +24,9 @@ const char* CommandVision::getCommandName()
 
 commandOutput CommandVision::tick(commandInput input) {
 
-	AD->calcLiftAutoDock(true);
-	autoAng = AD->getLADDrvAngCmd();
-	autoMag = AD->getLADDrvMagCmd();
-	autoRot = AD->getLADDrvRotCmd();
+	//Input vision stuff here
 
-	return commandOutput(autoMag, autoAng, autoRot);
+	return commandOutput(autoMag);
 }
 
 CommandVision::~CommandVision() {

@@ -8,11 +8,10 @@
 #ifndef SRC_AUTOCOMMANDS_COMMANDVISION_H_
 #define SRC_AUTOCOMMANDS_COMMANDVISION_H_
 #include "CommandBase.h"
-#include "../liftAutoDock.h"
 
 class CommandVision : public CommandBase {
 public:
-	CommandVision(swervelib *swerveLib);
+	CommandVision();
 	virtual ~CommandVision();
 
 	void init(commandInput input);
@@ -22,13 +21,7 @@ public:
 
 private:
 
-	liftAutoDock *AD;
-
 	double autoMag;
-
-	double autoAng;
-
-	double autoRot;
 
 	commandInput _input;
 };

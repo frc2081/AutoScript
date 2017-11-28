@@ -8,7 +8,6 @@
 #ifndef SRC_AUTOCOMMANDS_COMMANDMANAGER_H_
 #define SRC_AUTOCOMMANDS_COMMANDMANAGER_H_
 
-#include "..\swervelib.h"
 #include "CommandIO.h"
 #include "CommandBase.h"
 #include <queue>
@@ -17,7 +16,7 @@
 using namespace std;
 class CommandManager {
 public:
-	CommandManager(swervelib *swerveLib, robotTeam, robotStation, robotAction);
+	CommandManager(robotTeam, robotStation, robotAction);
 	virtual ~CommandManager();
 	commandOutput tick(commandInput input);
 
@@ -25,7 +24,6 @@ protected:
 	CommandBase *getNextCommand(commandInput input);
 
 private:
-	swervelib *_swerveLib;
 
 	queue<CommandBase*> commands;
 

@@ -7,15 +7,10 @@
 
 #ifndef AUTOSCRIPT_H_
 #define AUTOSCRIPT_H_
-#include "autoCommands/CommandManager.h";
+#include "autoCommands/CommandManager.h"
 
-class AutoScript {
-public:
-	AutoScript();
-	virtual ~AutoScript();
+CommandManager *manager;
 
-
-
-};
+commandInput input;
 
 #endif /* AUTOSCRIPT_H_ */

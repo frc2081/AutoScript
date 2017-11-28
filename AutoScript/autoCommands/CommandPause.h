@@ -9,6 +9,7 @@
 #define SRC_AUTOCOMMANDS_COMMANDPAUSE_H_
 #include "CommandBase.h"
 #include <time.h>
+#include <cstddef>
 
 class CommandPause : public CommandBase {
 public:

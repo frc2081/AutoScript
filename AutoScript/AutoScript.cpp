@@ -7,12 +7,12 @@
 
 #include "AutoScript.h"
 
-AutoScript::AutoScript() {
-	// TODO Auto-generated constructor stub
-
-}
-
-AutoScript::~AutoScript() {
-	// TODO Auto-generated destructor stub
+int main() {
+	manager = new CommandManager((robotTeam)0, (robotStation)0, (robotAction)0);
+	input.LWhlEnc = 0.5;
+	input.RWhlEnc = 4;
+	input.currentGyroReading = 270;
+	input.shooterEnc = 0;
+	manager->tick(input);
 }
 

@@ -12,7 +12,7 @@
 class CommandDrive : public CommandBase {
 public:
 	//Distance to travel is in imperial units
-	CommandDrive(swervelib *swerveLib, double toTravel, double directon);
+	CommandDrive(double toTravel, double directon);
 	virtual ~CommandDrive();
 
 	commandOutput tick(commandInput input);
@@ -22,17 +22,9 @@ public:
 protected:
 	double checkDistance(commandInput input);
 private:
-	swervelib *_swerveLib;
 
-	double LFWhlTurnEncInit;
-	double RFWhlTurnEncInit;
-	double LBWhlTurnEncInit;
-	double RBWhlTurnEncInit;
-
-	double LFWhlDrvEncInit;
-	double RFWhlDrvEncInit;
-	double LBWhlDrvEncInit;
-	double RBWhlDrvEncInit;
+	double LWhlEncInit;
+	double RWhlEncInit;
 
 	double _toTravel;
 	double _direction;

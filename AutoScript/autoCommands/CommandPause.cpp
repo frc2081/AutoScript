@@ -5,7 +5,7 @@
  *      Author: FIRSTUser
  */
 
-#include <autoCommands/CommandPause.h>
+#include "CommandPause.h"
 #include <stdio.h>
 
 CommandPause::CommandPause(double toWaitSec) {

@@ -5,7 +5,7 @@
  *      Author: FIRSTUser
  */
 
-#include <autoCommands/CommandShoot.h>
+#include "CommandShoot.h"
 #include <iostream>
 
 CommandShoot::CommandShoot(double fireTimeSec, double shooterSpd, double shooterAng) {
@@ -32,7 +32,7 @@ commandOutput CommandShoot::tick(commandInput input) {
 
 	printf("Shooting...\n");
 
-	if (elapsed <= 1) return commandOutput(0,0,0, _shootSpd, 0, _shootAng, 0);
+	if (elapsed <= 1) return commandOutput(0, _shootSpd, 0, _shootAng, 0);
 
 	if (_toWaitSec >= 0 && elapsed >= _toWaitSec) {
 		setComplete();
@@ -40,7 +40,7 @@ commandOutput CommandShoot::tick(commandInput input) {
 	}
 
 	//.7 is for short shots, the only time auto shooting will be done
-	return commandOutput(0,0,0, _shootSpd, 1, _shootAng, 1);
+	return commandOutput(0, _shootSpd, 1, _shootAng, 1);
 }
 
 CommandShoot::~CommandShoot() {

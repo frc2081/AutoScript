@@ -11,7 +11,7 @@
 
 class CommandTurn : public CommandBase {
 public:
-	CommandTurn(swervelib *swerveLib, double toRotate);
+	CommandTurn(double toRotate);
 	virtual ~CommandTurn();
 
 	commandOutput tick(commandInput input);
@@ -20,14 +20,7 @@ public:
 
 protected:
 	double checkRotation(commandInput input);
-
-	enum currentActivity {
-		wheelTurn,
-		driveMot
-	};
 private:
-
-	currentActivity currentState;
 
 	double _toRotate;
 	double _finalRot;

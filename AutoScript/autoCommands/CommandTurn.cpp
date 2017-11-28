@@ -5,14 +5,13 @@
  *      Author: FIRSTUser
  */
 
-#include <autoCommands/CommandTurn.h>
+#include "CommandTurn.h"
 #include <iostream>
 
-CommandTurn::CommandTurn(swervelib *swerveLib, double toRotate) {
+CommandTurn::CommandTurn(double toRotate) {
 	// TODO Auto-generated constructor stub
 
 	_toRotate = toRotate;
-	currentState = wheelTurn;
 }
 
 void CommandTurn::init (commandInput input) {
@@ -56,7 +55,7 @@ commandOutput CommandTurn::tick(commandInput input) {
 
 	printf("Target: %f Gyro %f\n", _finalRot, gyroReading );
 
-	return commandOutput(0, 0, _turnRate * _turnDirection);
+	return commandOutput(0, _turnRate * _turnDirection);
 }
 
 CommandTurn::~CommandTurn() {

@@ -5,12 +5,11 @@
  *      Author: FIRSTUser
  */
 
-#include <autoCommands/CommandDrive.h>
+#include "CommandDrive.h"
 #include <stdio.h>
 
-CommandDrive::CommandDrive(swervelib *swerveLib, double toTravel, double direction) {
+CommandDrive::CommandDrive(double toTravel, double direction) {
 	// TODO Auto-generated constructor stub
-	_swerveLib = swerveLib;
 	_toTravel = toTravel;
 	_direction = direction;
 }
@@ -24,20 +23,13 @@ commandOutput CommandDrive::tick(commandInput input) {
 		return doNothing();
 	}
 
-	return commandOutput(.5, _direction, 0);
+	return commandOutput(.5);
 }
 
 void CommandDrive::init(commandInput input) {
 
-	LFWhlDrvEncInit = input.LFWhlDrvEnc;
-	RFWhlDrvEncInit = input.RFWhlDrvEnc;
-	LBWhlDrvEncInit = input.LBWhlDrvEnc;
-	RBWhlDrvEncInit = input.RBWhlDrvEnc;
-
-	LFWhlTurnEncInit = input.LFWhlTurnEnc;
-	RFWhlTurnEncInit = input.RFWhlTurnEnc;
-	LBWhlTurnEncInit = input.LBWhlTurnEnc;
-	RBWhlTurnEncInit = input.RBWhlTurnEnc;
+	LWhlEncInit = input.LWhlEnc;
+	RWhlEncInit = input.RWhlEnc;
 }
 
 const char* CommandDrive::getCommandName()
@@ -47,12 +39,10 @@ const char* CommandDrive::getCommandName()
 
 double CommandDrive::checkDistance(commandInput input) {
 
-	double LFWhlDrvEnc = fabs(input.LFWhlDrvEnc - LFWhlDrvEncInit);
-	double RFWhlDrvEnc = fabs(input.RFWhlDrvEnc - RFWhlDrvEncInit);
-	double LBWhlDrvEnc = fabs(input.LBWhlDrvEnc - LBWhlDrvEncInit);
-	double RBWhlDrvEnc = fabs(input.RBWhlDrvEnc - RBWhlDrvEncInit);
+	double LWhlDrvEnc = fabs(input.LWhlEnc - LWhlEncInit);
+	double RWhlDrvEnc = fabs(input.RWhlEnc - RWhlEncInit);
 
-	double EncAvg = (LFWhlDrvEnc + RFWhlDrvEnc + LBWhlDrvEnc + RBWhlDrvEnc) / 4;
+	double EncAvg = (LWhlDrvEnc + RWhlDrvEnc) / 2;
 
 	printf("ENcAvg: %f", EncAvg);
 

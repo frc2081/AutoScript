@@ -9,28 +9,22 @@
 #define SRC_AUTOCOMMANDS_COMMANDIO_H_
 
 	struct commandOutput {
-		double autoAng;
 		double autoSpeed;
-		double autoRot;
 		double autoShooterSpd;
 		double autoLoadSpd;
 		double autoAimAng;
 		double autoIntakePwr;
 
 		commandOutput() {
-			autoAng = 0;
 			autoSpeed = 0;
-			autoRot = 0;
 			autoShooterSpd = 0;
 			autoLoadSpd = 0;
 			autoIntakePwr = 0;
 			autoAimAng = .4;
 		}
 
-		commandOutput(double mag, double ang, double rot) {
-			autoAng = ang;
+		commandOutput(double mag) {
 			autoSpeed = mag;
-			autoRot = rot;
 			autoShooterSpd = 0;
 			autoLoadSpd = 0;
 			autoIntakePwr = 0;
@@ -38,19 +32,15 @@
 		}
 
 		commandOutput(double shootSpd, double rotSpd) {
-			autoAng = 0;
 			autoSpeed = 0;
-			autoRot = 0;
 			autoIntakePwr = 0;
 			autoShooterSpd = shootSpd;
 			autoLoadSpd = rotSpd;
 			autoAimAng = .4;
 		}
 
-		commandOutput(double mag, double ang, double rot, double shootSpd, double rotSpd, double aimAng, double intakePwr){
-			autoAng = ang;
+		commandOutput(double mag, double shootSpd, double rotSpd, double aimAng, double intakePwr){
 			autoSpeed = mag;
-			autoRot = rot;
 			autoShooterSpd = shootSpd;
 			autoLoadSpd = rotSpd;
 			autoAimAng = aimAng;
@@ -60,14 +50,8 @@
 
 	struct  commandInput {
 		double currentGyroReading;
-		double LFWhlTurnEnc;
-		double RFWhlTurnEnc;
-		double RBWhlTurnEnc;
-		double LBWhlTurnEnc;
-		double LFWhlDrvEnc;
-		double RFWhlDrvEnc;
-		double RBWhlDrvEnc;
-		double LBWhlDrvEnc;
+		double LWhlEnc;
+		double RWhlEnc;
 		double shooterEnc;
 	};
 
@@ -87,9 +71,7 @@
 	enum robotAction {
 		NO_AUTO,
 		CROSS_MIDLINE,
-		GEAR_ONLY,
 		SHOOT_ONLY,
-		GEAR_AND_SHOOT,
 		SHOOT_ONLY_BIN
 	};
 
